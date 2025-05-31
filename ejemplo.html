@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>YASIO - Portfolio</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Roboto:ital,wght@0,400;0,700;1,400&display=swap');
+
+  /* Reset y básicos */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0; padding: 0;
+    background-color: var(--bg, #0a0a17);
+    color: var(--text, #bbb);
+    font-family: 'Roboto Mono', monospace;
+    overflow-x: hidden;
+  }
+  a {
+    color: var(--primary, #5c26f7);
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  strong {
+    color: var(--strong, white);
+  }
+  .purple {
+    color: var(--primary, #5c26f7);
+  }
+
+  /* Navbar */
+  nav {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    font-weight: 700;
+    font-family: 'Roboto Mono', monospace;
+  }
+  nav a {
+    color: var(--nav, #777);
+  }
+  nav a.active, nav a:hover {
+    color: var(--nav-active, white);
+  }
+
+  /* Container timeline */
+  .timeline {
+    max-width: 960px;
+    margin: 2rem auto;
+    position: relative;
+    padding-left: 3rem;
+    border-left: 2px solid var(--primary, #5c26f7);
+  }
+
+  /* Each timeline section */
+  section {
+    margin-bottom: 4rem;
+    position: relative;
+  }
+  section::before {
+    content: '';
+    position: absolute;
+    left: -12px;
+    top: 0;
+    width: 12px;
+    height: 12px;
+    background-color: var(--primary, #5c26f7);
+    border-radius: 50%;
+  }
+  section small {
+    color: var(--small, #555);
+    font-family: 'Roboto', sans-serif;
+  }
+
+  /* Header section */
+  .intro h1 {
+    font-weight: 900;
+    font-size: 2.5rem;
+    color: var(--strong, white);
+  }
+  .intro h1 .purple {
+    font-weight: 900;
+  }
+  .intro p {
+    font-family: 'Roboto', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--strong, white);
+    margin-top: 0.5rem;
+  }
+  .intro small {
+    color: var(--small, #555);
+  }
+
+  /* Work section */
+  .work {
+    position: relative;
+    padding-bottom: 3rem;
+  }
+  .work::before {
+    content: "MOBILE";
+    position: absolute;
+    top: 20px;
+    left: 0;
+    font-size: 10rem;
+    font-weight: 900;
+    font-family: 'Roboto Mono', monospace;
+    color: rgba(30, 25, 40, 0.3);
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+  }
+  .work h2 {
+    position: relative;
+    z-index: 1;
+    color: var(--text, #bbb);
+    margin-bottom: 1rem;
+  }
+  .work-projects {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+  }
+  .work-project {
+    flex: 0 0 auto;
+    width: 300px;
+    position: relative;
+    color: var(--strong, white);
+    font-family: 'Roboto Mono', monospace;
+    background: var(--card, #121221);
+    border-radius: 8px;
+    padding: 1rem;
+  }
+  .work-project img {
+    width: 100%;
+    border-radius: 4px;
+  }
+  .work-project h4 {
+    margin: 0.5rem 0 0;
+  }
+  .work-project small {
+    color: #aaa;
+  }
+
+  /* Contact section */
+  .contact {
+    max-width: 600px;
+    margin-top: 2rem;
+  }
+  .contact h3 {
+    font-weight: 700;
+    color: var(--strong, white);
+  }
+  .contact ul {
+    list-style: none;
+    padding: 0;
+    columns: 3;
+    column-gap: 1.5rem;
+  }
+  .contact li {
+    margin-bottom: 0.5rem;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 700;
+    color: var(--primary, #5c26f7);
+  }
+  .contact li a {
+    color: var(--primary, #5c26f7);
+  }
+
+  .btn-contact {
+    margin-top: 1rem;
+    background: linear-gradient(90deg, var(--primary, #5c26f7), #7855ff);
+    border: none;
+    border-radius: 30px;
+    padding: 0.75rem 2rem;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1rem;
+    color: white;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: background 0.3s ease;
+  }
+  .btn-contact:hover {
+    background: linear-gradient(90deg, #7855ff, var(--primary, #5c26f7));
+  }
+
+  /* Light mode overrides */
+  body.light-mode {
+    background-color: #f7f7fa;
+    color: #222;
+  }
+  body.light-mode nav a {
+    color: #555;
+  }
+  body.light-mode nav a.active,
+  body.light-mode nav a:hover {
+    color: #5c26f7;
+  }
+  body.light-mode .timeline {
+    border-left: 2px solid #5c26f7;
+  }
+  body.light-mode .work-project {
+    background: #fff;
+    color: #222;
+  }
+  body.light-mode .intro h1,
+  body.light-mode .contact h3 {
+    color: #222;
+  }
+  body.light-mode .intro p {
+    color: #222;
+  }
+  body.light-mode .btn-contact {
+    background: linear-gradient(90deg, #5c26f7, #7855ff);
+    color: #fff;
+  }
+  body.light-mode .btn-contact:hover {
+    background: linear-gradient(90deg, #7855ff, #5c26f7);
+  }
+  body.light-mode .contact li,
+  body.light-mode .contact li a {
+    color: #5c26f7;
+  }
+  body.light-mode strong {
+    color: #222;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="active">Start /&gt;</a>
+  <a href="#">Work /&gt;</a>
+  <a href="#">Lab /&gt;</a>
+  <a href="#">About /&gt;</a>
+  <a href="#">Contact /&gt;</a>
+</nav>
+
+<div class="timeline">
+
+  <!-- Intro Section -->
+  <section class="intro">
+    <small>Start /&gt;</small>
+    <h1>Hi, my name is <span class="purple">Jan Baszczok</span></h1>
+    <p><em>i design</em> and <strong>develop websites</strong></p>
+    <small>Let me show You...</small>
+  </section>
+
+  <!-- Work Section -->
+  <section class="work">
+    <small>Work /&gt;</small>
+    <h2>Selected web, mobile, video projects...</h2>
+    <div class="work-projects">
+      <div class="work-project">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/National_Geographic_logo.svg" alt="National Geographic Learning" />
+        <h4>National Geographic Learning</h4>
+        <small>00</small>
+      </div>
+      <div class="work-project">
+        <img src="https://cdn.dribbble.com/users/1018220/screenshots/6968756/bike.jpg" alt="Hotel z Rowerem" />
+        <h4>Hotel z Rowerem</h4>
+        <small>01</small>
+      </div>
+      <div class="work-project">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f5/Decathlon_logo.svg" alt="Decablog" />
+        <h4>Decablog</h4>
+        <small>02</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact">
+    <small>Contact /&gt;</small>
+    <h3>Find me on:</h3>
+    <ul>
+      <li><a href="https://linkedin.com/in/jan.baszczok" target="_blank" rel="noopener">LinkedIn: in/jan.baszczok</a></li>
+      <li><a href="https://twitter.com/YasiOnFire" target="_blank" rel="noopener">Twitter: @YasiOnFire</a></li>
+      <li><a href="https://github.com/YasiOnFire" target="_blank" rel="noopener">GitHub: github.com/YasiOnFire</a></li>
+      <li><a href="https://yasi.io" target="_blank" rel="noopener">Yasio</a></li>
+      <li><a href="mailto:hello@yasio.dev">hello@yasio.dev</a></li>
+      <li><a href="https://ko-fi.com/yasio" target="_blank" rel="noopener">Ko-fi</a></li>
+      <li><a href="https://pluralsight.com" target="_blank" rel="noopener">Pluralsight</a></li>
+    </ul>
+    <button class="btn-contact">GET IN TOUCH</button>
+  </section>
+
+</div>
+
+<script>
+    // Toggle dark/light mode
+    const darkTheme = {
+        '--bg': '#0a0a17',
+        '--text': '#bbb',
+        '--primary': '#5c26f7',
+        '--card': '#121221',
+        '--nav': '#777',
+        '--nav-active': '#fff',
+        '--strong': 'white',
+        '--small': '#555'
+    };
+    const lightTheme = {
+        '--bg': '#f7f7fa',
+        '--text': '#222',
+        '--primary': '#5c26f7',
+        '--card': '#fff',
+        '--nav': '#555',
+        '--nav-active': '#5c26f7',
+        '--strong': '#222',
+        '--small': '#555'
+    };
+
+    function setTheme(theme) {
+        for (const key in theme) {
+            document.documentElement.style.setProperty(key, theme[key]);
+        }
+        document.body.classList.toggle('light-mode', theme === lightTheme);
+        localStorage.setItem('theme', theme === lightTheme ? 'light' : 'dark');
+    }
+
+    function toggleTheme() {
+        const isLight = document.body.classList.toggle('light-mode');
+        setTheme(isLight ? lightTheme : darkTheme);
+    }
+
+    // Add toggle button
+    const btn = document.createElement('button');
+    btn.textContent = '🌙/☀️';
+    btn.style.position = 'fixed';
+    btn.style.top = '1rem';
+    btn.style.right = '1rem';
+    btn.style.zIndex = 1000;
+    btn.style.background = '#5c26f7';
+    btn.style.color = '#fff';
+    btn.style.border = 'none';
+    btn.style.borderRadius = '50%';
+    btn.style.width = '40px';
+    btn.style.height = '40px';
+    btn.style.cursor = 'pointer';
+    btn.title = 'Toggle dark/light mode';
+    btn.onclick = toggleTheme;
+    document.body.appendChild(btn);
+
+    // On load, set theme from localStorage
+    const saved = localStorage.getItem('theme');
+    if (saved === 'light') {
+        setTheme(lightTheme);
+    } else {
+        setTheme(darkTheme);
+    }
+</script>
+
+</body>
+</html>
