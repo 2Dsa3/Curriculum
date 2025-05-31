@@ -45,54 +45,11 @@
   }
   .container {
     position: relative;
-    max-width: 1200px;
+    max-width: 900px;
     margin: 0 auto;
-    padding: 0.2rem 1rem 4rem;
+    padding: 2rem 1rem 4rem;
     z-index: 1;
   }
-  
-  body.dark-mode {
-    --bg: #23272e;
-    --text: #e6e6e6;
-    --card-bg: #2e323a;          /* Igual que --section-bg, ojo que lo usas */
-    --border: #444;
-    --accent: #bfa76a;
-    --accent-light: #e2c97b;
-    --gray: #aaa;
-    --shadow: 0 2px 8px rgba(0,0,0,0.18);
-    --shadow-hover: 0 0 18px rgba(191, 167, 106, 0.6);
-    --footer: #23272e;
-    --footer-text: #f3e9d2;
-    --header-bg: #23272e;
-    --header-text: #f3e9d2;
-    --skills-bg: #bfa76a;
-    --skills-text: #23272e;
-    --nav-hover: #e2c97b;
-  }
-
-    body.light-mode {
-    --bg: #23272e;
-    --text: #e6e6e6;
-    --header-bg: #23272e;
-    --header-text: #f3e9d2;
-    --accent: #bfa76a;
-    --section-bg: #2e323a;
-    --footer-bg: #23272e;
-    --footer-text: #f3e9d2;
-    --skills-bg: #bfa76a;
-    --skills-text: #23272e;
-    --nav-hover: #e2c97b;
-    --shadow: 0 2px 8px rgba(0,0,0,0.18);
-  }
-
-  body.light-mode a {
-    color: var(--accent);
-  }
-
-  body.light-mode a:hover {
-    color: var(--accent-light);
-  }
-
   header {
     background: var(--header-bg);
     color: var(--header-text);
@@ -125,7 +82,6 @@
     font-size: 1rem;
     cursor: pointer;
     transition: background 0.2s, color 0.2s, border 0.2s;
-    margin-left:15px;
   }
   .toggle-mode-btn:hover {
     background: var(--accent);
@@ -308,6 +264,8 @@
     border-top: 1px solid var(--border);
     color: var(--gray);
     font-size: 0.9rem;
+    position: relative;
+    z-index: 2;
   }
   #contact div {
     margin-bottom: 1rem;
@@ -321,6 +279,8 @@
     font-size: 0.85rem;
     color: var(--footer);
     border-top: 1px solid var(--border);
+    position: relative;
+    z-index: 2;
   }
   @media (max-width: 400px) {
     nav a {
@@ -343,7 +303,7 @@
       <a href="#timeline">Timeline</a>
       <a href="#contact">Contact</a>
       <a href="your-cv.pdf" target="_blank" rel="noopener noreferrer">CV</a>
-      <button class="toggle-mode-btn" id="toggle-mode-btn" aria-label="Toggle dark/light mode">🌙 Dark mode</button>
+      <button class="toggle-mode-btn" id="toggle-mode-btn" aria-label="Toggle dark/light mode">🌙</button>
     </nav>
   </header>
 
@@ -391,17 +351,13 @@
         <span class="timeline-dot"></span>
         <div class="timeline-date">2023</div>
         <div class="timeline-content">
-          <a href="https://github.com/2Dsa3/POO/tree/main/ajedrezProyecto" target="_blank" rel="noopener noreferrer" style="color: #f3b94a; text-decoration: underline; font-weight: bold;">
+          <a href="https://github.com/2Dsa3/POO/tree/main/ajedrezProyecto" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: underline; font-weight: bold;">
             <h4>Chess game - University Project</h4>
           </a>
           <ul>
-            <li>
-              Developed a Java chess game applying object-oriented programming with a fully functional graphical user interface.
-            </li>
+            <li>Developed a Java chess game applying object-oriented programming with a fully functional graphical user interface.</li>
             <br />
-            <li>
-              Watch the demonstration on <a href="https://www.youtube.com/watch?v=aNJL6E1KS90&ab_channel=Xod%C3%B3" target="_blank" rel="noopener noreferrer" style="color: #f3b94a; text-decoration: underline; font-weight: bold;">YouTube</a>.
-            </li>
+            <li>Watch the demonstration on <a href="https://www.youtube.com/watch?v=aNJL6E1KS90&ab_channel=Xod%C3%B3" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: underline; font-weight: bold;">YouTube</a>.</li>
           </ul>
         </div>
       </div>
@@ -409,33 +365,31 @@
         <span class="timeline-dot"></span>
         <div class="timeline-date">2023</div>
         <div class="timeline-content">
-          <a href="https://github.com/2Dsa3/POO/tree/main/Venta_de_Vehiculos" target="_blank" rel="noopener noreferrer" style="color: #f3b94a; text-decoration: underline; font-weight: bold;">
+          <a href="https://github.com/2Dsa3/POO/tree/main/Venta_de_Vehiculos" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: underline; font-weight: bold;">
             <h4>Vehicle Sales App - University Project</h4>
           </a>
           <ul>
-            <li> Developed a Java application using object-oriented programming to manage vehicle sales and user interactions. Backend-focused, no GUI.</li>
-
+            <li>Developed a Java application using object-oriented programming to manage vehicle sales and user interactions. Backend-focused, no GUI.</li>
           </ul>
         </div>
       </div>
-      
     </div>
   </section>
 
   <section id="contact">
     <div>
       <strong>Contact me</strong><br />
-      Email: <a href="mailto:davsum04@hotmail.com">davsum04@hotmail.com</a><br />
-      LinkedIn: <a href="https://www.linkedin.com/in/david-sumba-correa-a20155168/" target="_blank" rel="noopener noreferrer">David Sumba</a><br />
-      GitHub: <a href="https://github.com/2Dsa3" target="_blank" rel="noopener noreferrer"> 2Dsa3</a>
+      Email: <a href="mailto:davsum04@hotmail.com" style="color: var(--accent); text-decoration: underline;">davsum04@hotmail.com</a><br />
+      LinkedIn: <a href="https://www.linkedin.com/in/david-sumba-correa-a20155168/" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: underline;">David Sumba</a><br />
+      GitHub: <a href="https://github.com/2Dsa3" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: underline;">2Dsa3</a>
     </div>
     <div>
       <strong>Site map</strong><br />
-      <a href="#intro">Home</a><br />
-      <a href="#projects">Projects</a><br />
-      <a href="#timeline">Timeline</a><br />
-      <a href="#contact">Contact</a><br />
-      <a href="your-cv.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+      <a href="#intro" style="color: var(--accent); text-decoration: underline;">Home</a><br />
+      <a href="#projects" style="color: var(--accent); text-decoration: underline;">Projects</a><br />
+      <a href="#timeline" style="color: var(--accent); text-decoration: underline;">Timeline</a><br />
+      <a href="#contact" style="color: var(--accent); text-decoration: underline;">Contact</a><br />
+      <a href="your-cv.pdf" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: underline;">CV</a>
     </div>
   </section>
 
@@ -445,12 +399,12 @@
 </div>
 
 <script>
-  // Canvas background with floating data science shapes (nodes and connecting lines)
+  // Canvas background animation with moving points connected by lines
   const canvas = document.getElementById('bg-canvas');
   const ctx = canvas.getContext('2d');
   let width, height;
-  let points = [];
   const POINT_COUNT = 50;
+  let points = [];
 
   function resize() {
     width = window.innerWidth;
@@ -480,9 +434,8 @@
     draw() {
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
-      // Color adapts to mode
       const isLight = document.body.classList.contains('light-mode');
-      ctx.fillStyle = isLight ? 'rgba(25, 118, 210, 0.7)' : 'rgba(30,144,255,0.7)';
+      ctx.fillStyle = isLight ? 'rgba(243, 185, 74, 0.7)' : 'rgba(243, 185, 74, 0.7)';
       ctx.fill();
     }
   }
@@ -496,8 +449,8 @@
         if (dist < 120) {
           const isLight = document.body.classList.contains('light-mode');
           ctx.strokeStyle = isLight
-            ? `rgba(25,118,210,${1 - dist / 120})`
-            : `rgba(30,144,255,${1 - dist / 120})`;
+            ? `rgba(243, 185, 74, ${1 - dist / 120})`
+            : `rgba(243, 185, 74, ${1 - dist / 120})`;
           ctx.lineWidth = 1;
           ctx.beginPath();
           ctx.moveTo(points[i].x, points[i].y);
@@ -510,55 +463,9 @@
 
   function animate() {
     ctx.clearRect(0, 0, width, height);
-    points.forEach((p) => {
+    points.forEach(p => {
       p.move();
       p.draw();
     });
     connectPoints();
-    requestAnimationFrame(animate);
-  }
-
-  function init() {
-    resize();
-    points = [];
-    for (let i = 0; i < POINT_COUNT; i++) {
-      points.push(new Point());
-    }
-    animate();
-  }
-
-  window.addEventListener('resize', init);
-  init();
-
-  // Dark/Light mode toggle
-  const btn = document.getElementById('toggle-mode-btn');
-  function setMode(mode) {
-    if (mode === 'light') {
-      document.body.classList.add('light-mode');
-      btn.textContent = '🌞';
-      localStorage.setItem('theme', 'light');
-    } else {
-      document.body.classList.remove('light-mode');
-      btn.textContent = '🌙';
-      localStorage.setItem('theme', 'dark');
-    }
-  }
-  btn.addEventListener('click', () => {
-    const isLight = document.body.classList.contains('light-mode');
-    setMode(isLight ? 'dark' : 'light');
-  });
-  // On load, set mode from localStorage or prefers-color-scheme
-  (function () {
-    const saved = localStorage.getItem('theme');
-    if (saved) {
-      setMode(saved);
-    } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
-      setMode('light');
-    }
-  })();
-
-  
-</script>
-
-</body>
-</html>
+    requestAnimation
