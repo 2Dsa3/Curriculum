@@ -3,360 +3,293 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>YASIO - Portfolio</title>
+<title>RyanCV</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Roboto:ital,wght@0,400;0,700;1,400&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
 
-  /* Reset y básicos */
   * {
     box-sizing: border-box;
   }
+
   body {
     margin: 0; padding: 0;
-    background-color: var(--bg, #0a0a17);
-    color: var(--text, #bbb);
-    font-family: 'Roboto Mono', monospace;
-    overflow-x: hidden;
-  }
-  a {
-    color: var(--primary, #5c26f7);
-    text-decoration: none;
-  }
-  a:hover {
-    text-decoration: underline;
-  }
-  strong {
-    color: var(--strong, white);
-  }
-  .purple {
-    color: var(--primary, #5c26f7);
-  }
-
-  /* Navbar */
-  nav {
+    font-family: 'Poppins', sans-serif;
+    background: #111;
+    color: #eee;
     display: flex;
-    justify-content: flex-end;
-    gap: 1rem;
-    padding: 1rem 2rem;
-    font-weight: 700;
-    font-family: 'Roboto Mono', monospace;
-  }
-  nav a {
-    color: var(--nav, #777);
-  }
-  nav a.active, nav a:hover {
-    color: var(--nav-active, white);
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
   }
 
-  /* Container timeline */
-  .timeline {
-    max-width: 960px;
-    margin: 2rem auto;
-    position: relative;
-    padding-left: 3rem;
-    border-left: 2px solid var(--primary, #5c26f7);
+  .container {
+    display: flex;
+    max-width: 1200px;
+    width: 100%;
+    gap: 2rem;
   }
 
-  /* Each timeline section */
-  section {
-    margin-bottom: 4rem;
+  /* Left card */
+  .left-card {
+    background: linear-gradient(135deg, #222 0%, #111 100%);
+    padding: 2rem;
+    max-width: 350px;
+    border-radius: 10px;
     position: relative;
-  }
-  section::before {
-    content: '';
-    position: absolute;
-    left: -12px;
-    top: 0;
-    width: 12px;
-    height: 12px;
-    background-color: var(--primary, #5c26f7);
-    border-radius: 50%;
-  }
-  section small {
-    color: var(--small, #555);
-    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 20px #0ff;
   }
 
-  /* Header section */
-  .intro h1 {
-    font-weight: 900;
-    font-size: 2.5rem;
-    color: var(--strong, white);
-  }
-  .intro h1 .purple {
-    font-weight: 900;
-  }
-  .intro p {
-    font-family: 'Roboto', serif;
-    font-style: italic;
-    font-size: 1.3rem;
-    color: var(--strong, white);
-    margin-top: 0.5rem;
-  }
-  .intro small {
-    color: var(--small, #555);
+  .left-card img {
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 0 8px #0ff);
   }
 
-  /* Work section */
-  .work {
-    position: relative;
-    padding-bottom: 3rem;
+  .name {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
   }
-  .work::before {
-    content: "MOBILE";
-    position: absolute;
-    top: 20px;
-    left: 0;
-    font-size: 10rem;
-    font-weight: 900;
-    font-family: 'Roboto Mono', monospace;
-    color: rgba(30, 25, 40, 0.3);
-    pointer-events: none;
-    user-select: none;
-    z-index: 0;
-  }
-  .work h2 {
-    position: relative;
-    z-index: 1;
-    color: var(--text, #bbb);
+  .role {
+    font-weight: 300;
+    color: #aaf;
     margin-bottom: 1rem;
   }
-  .work-projects {
+
+  .socials {
     display: flex;
     gap: 1rem;
-    overflow-x: auto;
-    padding-bottom: 1rem;
-    position: relative;
-    z-index: 1;
+    margin-bottom: 2rem;
   }
-  .work-project {
-    flex: 0 0 auto;
-    width: 300px;
-    position: relative;
-    color: var(--strong, white);
-    font-family: 'Roboto Mono', monospace;
-    background: var(--card, #121221);
-    border-radius: 8px;
-    padding: 1rem;
-  }
-  .work-project img {
-    width: 100%;
-    border-radius: 4px;
-  }
-  .work-project h4 {
-    margin: 0.5rem 0 0;
-  }
-  .work-project small {
-    color: #aaa;
+  .socials a {
+    color: #0ff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
   }
 
-  /* Contact section */
-  .contact {
-    max-width: 600px;
-    margin-top: 2rem;
-  }
-  .contact h3 {
-    font-weight: 700;
-    color: var(--strong, white);
-  }
-  .contact ul {
-    list-style: none;
-    padding: 0;
-    columns: 3;
-    column-gap: 1.5rem;
-  }
-  .contact li {
-    margin-bottom: 0.5rem;
-    font-family: 'Roboto Mono', monospace;
-    font-weight: 700;
-    color: var(--primary, #5c26f7);
-  }
-  .contact li a {
-    color: var(--primary, #5c26f7);
-  }
-
-  .btn-contact {
-    margin-top: 1rem;
-    background: linear-gradient(90deg, var(--primary, #5c26f7), #7855ff);
+  .download-btn {
+    background: #0ff;
     border: none;
-    border-radius: 30px;
-    padding: 0.75rem 2rem;
-    font-family: 'Roboto Mono', monospace;
-    font-size: 1rem;
-    color: white;
+    border-radius: 4px;
+    padding: 0.8rem 1.5rem;
+    font-weight: 600;
+    color: #111;
     cursor: pointer;
-    letter-spacing: 1px;
-    transition: background 0.3s ease;
+    box-shadow: 0 0 8px #0ff;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    user-select: none;
   }
-  .btn-contact:hover {
-    background: linear-gradient(90deg, #7855ff, var(--primary, #5c26f7));
+  .download-btn:hover {
+    background: #0cc;
   }
 
-  /* Light mode overrides */
-  body.light-mode {
-    background-color: #f7f7fa;
-    color: #222;
+  /* Right content */
+  .right-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
   }
-  body.light-mode nav a {
-    color: #555;
+
+  h2.section-title {
+    border-bottom: 2px solid #cc0;
+    color: #cc0;
+    padding-bottom: 0.3rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
   }
-  body.light-mode nav a.active,
-  body.light-mode nav a:hover {
-    color: #5c26f7;
+
+  .about-text {
+    max-width: 700px;
+    line-height: 1.5;
+    color: #ccc;
   }
-  body.light-mode .timeline {
-    border-left: 2px solid #5c26f7;
+
+  .info-list {
+    margin-top: 1rem;
+    max-width: 400px;
   }
-  body.light-mode .work-project {
-    background: #fff;
-    color: #222;
+  .info-list div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
   }
-  body.light-mode .intro h1,
-  body.light-mode .contact h3 {
-    color: #222;
+  .info-list div span.label {
+    font-weight: 600;
+    color: #cc0;
   }
-  body.light-mode .intro p {
-    color: #222;
+
+  .services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 1.5rem;
   }
-  body.light-mode .btn-contact {
-    background: linear-gradient(90deg, #5c26f7, #7855ff);
-    color: #fff;
+
+  .service-box {
+    background: #222;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 0 12px #333;
+    text-align: center;
   }
-  body.light-mode .btn-contact:hover {
-    background: linear-gradient(90deg, #7855ff, #5c26f7);
+  .service-icon {
+    background: #cc0;
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 1rem auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    font-size: 24px;
+    color: #111;
   }
-  body.light-mode .contact li,
-  body.light-mode .contact li a {
-    color: #5c26f7;
+  .service-title {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
   }
-  body.light-mode strong {
-    color: #222;
+  .service-desc {
+    font-size: 0.9rem;
+    color: #bbb;
+  }
+
+  /* Sidebar */
+  .sidebar {
+    position: fixed;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #111;
+    padding: 0.5rem 0.2rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .sidebar button {
+    background: none;
+    border: none;
+    color: #0ff;
+    font-size: 1.6rem;
+    cursor: pointer;
+    user-select: none;
+  }
+  .sidebar button:hover {
+    color: #cc0;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    body {
+      padding: 1rem;
+    }
+    .container {
+      flex-direction: column;
+      align-items: center;
+    }
+    .left-card {
+      max-width: 100%;
+      width: 320px;
+      margin-bottom: 2rem;
+    }
+    .right-content {
+      max-width: 100%;
+    }
+    .sidebar {
+      position: static;
+      flex-direction: row;
+      justify-content: center;
+      margin-bottom: 1rem;
+      gap: 2rem;
+      transform: none;
+    }
   }
 </style>
 </head>
 <body>
 
-<nav>
-  <a href="#" class="active">Start /&gt;</a>
-  <a href="#">Work /&gt;</a>
-  <a href="#">Lab /&gt;</a>
-  <a href="#">About /&gt;</a>
-  <a href="#">Contact /&gt;</a>
-</nav>
-
-<div class="timeline">
-
-  <!-- Intro Section -->
-  <section class="intro">
-    <small>Start /&gt;</small>
-    <h1>Hi, my name is <span class="purple">Jan Baszczok</span></h1>
-    <p><em>i design</em> and <strong>develop websites</strong></p>
-    <small>Let me show You...</small>
-  </section>
-
-  <!-- Work Section -->
-  <section class="work">
-    <small>Work /&gt;</small>
-    <h2>Selected web, mobile, video projects...</h2>
-    <div class="work-projects">
-      <div class="work-project">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/National_Geographic_logo.svg" alt="National Geographic Learning" />
-        <h4>National Geographic Learning</h4>
-        <small>00</small>
-      </div>
-      <div class="work-project">
-        <img src="https://cdn.dribbble.com/users/1018220/screenshots/6968756/bike.jpg" alt="Hotel z Rowerem" />
-        <h4>Hotel z Rowerem</h4>
-        <small>01</small>
-      </div>
-      <div class="work-project">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f5/Decathlon_logo.svg" alt="Decablog" />
-        <h4>Decablog</h4>
-        <small>02</small>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section class="contact">
-    <small>Contact /&gt;</small>
-    <h3>Find me on:</h3>
-    <ul>
-      <li><a href="https://linkedin.com/in/jan.baszczok" target="_blank" rel="noopener">LinkedIn: in/jan.baszczok</a></li>
-      <li><a href="https://twitter.com/YasiOnFire" target="_blank" rel="noopener">Twitter: @YasiOnFire</a></li>
-      <li><a href="https://github.com/YasiOnFire" target="_blank" rel="noopener">GitHub: github.com/YasiOnFire</a></li>
-      <li><a href="https://yasi.io" target="_blank" rel="noopener">Yasio</a></li>
-      <li><a href="mailto:hello@yasio.dev">hello@yasio.dev</a></li>
-      <li><a href="https://ko-fi.com/yasio" target="_blank" rel="noopener">Ko-fi</a></li>
-      <li><a href="https://pluralsight.com" target="_blank" rel="noopener">Pluralsight</a></li>
-    </ul>
-    <button class="btn-contact">GET IN TOUCH</button>
-  </section>
-
+<div class="sidebar" aria-label="Sidebar navigation">
+  <button title="Menu">&#9776;</button>
+  <button title="Settings">&#9881;</button>
+  <button title="Profile">&#128100;</button>
+  <button title="Resume">&#128196;</button>
+  <button title="Folder">&#128193;</button>
+  <button title="Send">&#9993;</button>
 </div>
 
-<script>
-    // Toggle dark/light mode
-    const darkTheme = {
-        '--bg': '#0a0a17',
-        '--text': '#bbb',
-        '--primary': '#5c26f7',
-        '--card': '#121221',
-        '--nav': '#777',
-        '--nav-active': '#fff',
-        '--strong': 'white',
-        '--small': '#555'
-    };
-    const lightTheme = {
-        '--bg': '#f7f7fa',
-        '--text': '#222',
-        '--primary': '#5c26f7',
-        '--card': '#fff',
-        '--nav': '#555',
-        '--nav-active': '#5c26f7',
-        '--strong': '#222',
-        '--small': '#555'
-    };
+<div class="container">
+  <div class="left-card" role="region" aria-label="Profile card">
+    <img src="https://i.imgur.com/NL4D1fj.jpg" alt="Hampton Ryan" />
+    <div class="name">Hampton Ryan</div>
+    <div class="role">Digital Project Manager</div>
+    <div class="socials" aria-label="Social media links">
+      <a href="#" aria-label="Instagram">IG</a>
+      <a href="#" aria-label="LinkedIn">IN</a>
+      <a href="#" aria-label="Twitter">TW</a>
+      <a href="#" aria-label="YouTube">YT</a>
+    </div>
+    <button class="download-btn" aria-label="Download Resume">
+      &#128229; Download Resume
+    </button>
+  </div>
 
-    function setTheme(theme) {
-        for (const key in theme) {
-            document.documentElement.style.setProperty(key, theme[key]);
-        }
-        document.body.classList.toggle('light-mode', theme === lightTheme);
-        localStorage.setItem('theme', theme === lightTheme ? 'light' : 'dark');
-    }
+  <div class="right-content" role="main">
+    <section aria-labelledby="about-title">
+      <h2 id="about-title" class="section-title">About Me</h2>
+      <p class="about-text">
+        Hello! I'm Hampton Ryan. I have rich experience in management, accountancy, law, human resources, financial control. I love to talk with you about our unique.
+      </p>
+      <div class="info-list" role="list">
+        <div><span class="label">Age:</span> <span>24</span></div>
+        <div><span class="label">Residence:</span> <span>USA</span></div>
+        <div><span class="label">Freelance:</span> <span>Available</span></div>
+        <div><span class="label">Address:</span> <span>California, USA</span></div>
+      </div>
+    </section>
 
-    function toggleTheme() {
-        const isLight = document.body.classList.toggle('light-mode');
-        setTheme(isLight ? lightTheme : darkTheme);
-    }
-
-    // Add toggle button
-    const btn = document.createElement('button');
-    btn.textContent = '🌙/☀️';
-    btn.style.position = 'fixed';
-    btn.style.top = '1rem';
-    btn.style.right = '1rem';
-    btn.style.zIndex = 1000;
-    btn.style.background = '#5c26f7';
-    btn.style.color = '#fff';
-    btn.style.border = 'none';
-    btn.style.borderRadius = '50%';
-    btn.style.width = '40px';
-    btn.style.height = '40px';
-    btn.style.cursor = 'pointer';
-    btn.title = 'Toggle dark/light mode';
-    btn.onclick = toggleTheme;
-    document.body.appendChild(btn);
-
-    // On load, set theme from localStorage
-    const saved = localStorage.getItem('theme');
-    if (saved === 'light') {
-        setTheme(lightTheme);
-    } else {
-        setTheme(darkTheme);
-    }
-</script>
+    <section aria-labelledby="services-title">
+      <h2 id="services-title" class="section-title">My Services</h2>
+      <div class="services">
+        <div class="service-box" role="article">
+          <div class="service-icon">&#128176;</div>
+          <div class="service-title">Management Consultation</div>
+          <div class="service-desc">
+            Fundamental role is to troubleshoot concerns that include company organisation and implemented strategies.
+          </div>
+        </div>
+        <div class="service-box" role="article">
+          <div class="service-icon">&#128188;</div>
+          <div class="service-title">IT Consultation</div>
+          <div class="service-desc">
+            Provide various applications of information and technology for the company, business development of the organisation.
+          </div>
+        </div>
+        <div class="service-box" role="article">
+          <div class="service-icon">&#128200;</div>
+          <div class="service-title">Strategy Consultation</div>
+          <div class="service-desc">
+            The market for strategy consulting services consists disciplines: Corporate Strategy, Economic Policy.
+          </div>
+        </div>
+        <div class="service-box" role="article">
+          <div class="service-icon">&#169;</div>
+          <div class="service-title">Legal Consultation</div>
+          <div class="service-desc">
+            Experts in a specific field of law, such as real estate, business, or health care. We work with top executives.
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
 
 </body>
 </html>
